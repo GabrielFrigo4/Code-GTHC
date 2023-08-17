@@ -1,0 +1,7 @@
+você divide por 2 o numero decimal, 
+e o resto voce coloca na direita
+13 -> 1101
+32 -> 100000
+22 -> 10110
+54 -> 110110
+61 -> 111101
