@@ -1,4 +1,4 @@
-#include "profile.h"
+#include "new_types.h"
 
 typedef struct profile
 {
@@ -6,7 +6,3 @@ typedef struct profile
     uint64 level;
     char name[32];
 } profile;
-
-profile getProfile()
-{
-}

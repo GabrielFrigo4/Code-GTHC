@@ -6,3 +6,9 @@ typedef unsigned short int uint16;
 typedef signed short int sint16;
 typedef unsigned char uint8;
 typedef signed char sint8;
+typedef uint32 bool;
+
+#define TRUE 1
+#define true TRUE
+#define FALSE 0
+#define false FALSE
