@@ -1,7 +1,8 @@
-#include "rand.h"
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+#include "rand.h"
 
 void init_rand()
 {

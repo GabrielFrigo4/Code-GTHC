@@ -16,11 +16,13 @@ int main(int argc, char **argv)
 int GAME_main()
 {
     bool running = true;
+    screen _screen = create_screen(32, 128);
     while (running)
     {
-        screen _screen = create_screen(32, 128);
         screen_flush(_screen);
-        getc(stdin);
+
+        char input[_screen.width];
+        fgets(input, _screen.width - 1, stdin);
     }
     return 0;
 }

@@ -1,7 +1,8 @@
-#include <screen.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
+#include "screen.h"
 
 const char *input = "[INPUT]: \n\r";
 
