@@ -4,6 +4,7 @@
 #include <stdio.h>
 /* CUSTOM */
 #include "screen.h"
+#include "utils.h"
 
 const char *input = "[INPUT]: \n\r";
 
@@ -88,8 +89,26 @@ void screen_set_edge(screen _screen, char data)
     memset(_screen.buffer + screen_size - (_screen.width + 1), data, _screen.width);
 }
 
-void screen_set_line(screen _screen, char *data, uint8 line, uint8 offset)
+void screen_set_line_ext(screen _screen, char *data, uint32 data_size, uint8 line_index, uint8 line_offset)
 {
-    void *screen_buffer = _screen.buffer + offset + line * (_screen.width + 1);
-    memcpy(screen_buffer, data, strlen(data));
+    void *screen_buffer = _screen.buffer + line_offset + line_index * (_screen.width + 1);
+    memcpy(screen_buffer, data, data_size);
+}
+
+void screen_set_line(screen _screen, char *data, uint8 line_index, uint8 line_offset)
+{
+    screen_set_line_ext(_screen, data, strlen((const char *)data), line_index, line_offset);
+}
+
+void screen_set_lines_ext(screen _screen, char **data, uint32 data_size, uint8 start_line_index, uint8 line_offset)
+{
+    for (uint32 i = 0; i < data_size; i++)
+    {
+        screen_set_line(_screen, data[i], start_line_index + i, line_offset);
+    }
+}
+
+void screen_set_lines(screen _screen, char **data, uint8 start_line_index, uint8 line_offset)
+{
+    screen_set_lines_ext(_screen, data, arrlen((const void **)data), start_line_index, line_offset);
 }

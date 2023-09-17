@@ -14,3 +14,7 @@ typedef uint32 bool;
 #define true TRUE
 #define FALSE 0
 #define false FALSE
+
+#ifndef NULL
+#define NULL 0
+#endif
