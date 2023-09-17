@@ -59,6 +59,7 @@ void screen_set_full(screen _screen, char data)
 {
     for (uint32 i = 0; i < _screen.height; i++)
     {
+        void *screen_buffer = _screen.buffer + i * (_screen.width + 1);
         memset(_screen.buffer + i * (_screen.width + 1), data, _screen.width);
     }
 }
@@ -67,7 +68,8 @@ void screen_set_internal(screen _screen, char data)
 {
     for (uint32 i = 1; i < _screen.height - 1; i++)
     {
-        memset(_screen.buffer + i * (_screen.width + 1) + 1, data, _screen.width - 2);
+        void *screen_buffer = _screen.buffer + i * (_screen.width + 1) + 1;
+        memset(screen_buffer, data, _screen.width - 2);
     }
 }
 
@@ -78,8 +80,16 @@ void screen_set_edge(screen _screen, char data)
     memset(_screen.buffer, data, _screen.width);
     for (uint32 i = 1; i < _screen.height - 1; i++)
     {
-        _screen.buffer[_screen.width - 1 + i * (_screen.width + 1)] = data;
-        _screen.buffer[i * (_screen.width + 1)] = data;
+        uint32 screen_start_index = i * (_screen.width + 1);
+        uint32 screen_end_index = _screen.width - 1 + i * (_screen.width + 1);
+        _screen.buffer[screen_start_index] = data;
+        _screen.buffer[screen_end_index] = data;
     }
     memset(_screen.buffer + screen_size - (_screen.width + 1), data, _screen.width);
+}
+
+void screen_set_line(screen _screen, char *data, uint8 line, uint8 offset)
+{
+    void *screen_buffer = _screen.buffer + offset + line * (_screen.width + 1);
+    memcpy(screen_buffer, data, strlen(data));
 }
