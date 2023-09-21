@@ -3,7 +3,7 @@ default:
 	make run
 
 build:
-	gcc -O2 -m64 -march=native -mrdrnd -Iheader/ code/*.c -o gcds
+	gcc -O2 -m64 -march=native -mrdrnd -Iheader/ code/*.c code/game/*.c -o clsa
 
 run:
-	./gcds
+	./clsa
