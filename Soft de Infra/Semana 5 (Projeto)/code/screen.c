@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <wchar.h>
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 #include <sys/ioctl.h>
 #elif defined(_WIN32) || defined(_WIN64)
@@ -11,7 +12,7 @@
 #include "screen.h"
 #include "utils.h"
 
-const char *input = "[INPUT]: \n\r";
+const wchar *input = L"[INPUT]: \n\r";
 
 void clear_terminal()
 {
@@ -44,15 +45,15 @@ void get_terminal_size(uint32 *rows, uint32 *columns)
 screen *create_screen(uint8 height, uint8 width)
 {
     const uint32 screen_size = height * (width + 1);
-    const uint32 buffer_size = screen_size + strlen(input);
+    const uint32 buffer_size = (screen_size + wstrlen(input)) * sizeof(wchar);
 
-    char *buffer = malloc(buffer_size);
-    memset(buffer, ' ', buffer_size);
+    wchar *buffer = malloc(buffer_size);
+    memset(buffer, L' ', buffer_size);
     for (uint32 i = 0; i < height; i++)
     {
         buffer[width + i * (width + 1)] = '\n';
     }
-    memcpy(buffer + screen_size, input, strlen(input));
+    memcpy(buffer + screen_size, input, wstrlen(input));
 
     screen *_screen = malloc(sizeof(screen));
     screen _temp = {height, width, buffer};
@@ -71,7 +72,7 @@ screen *destroy_screen(screen *_screen)
 
 void screen_write(screen *_screen)
 {
-    printf(_screen->buffer);
+    wprintf(_screen->buffer);
 }
 
 void screen_flush(screen *_screen)
@@ -80,7 +81,7 @@ void screen_flush(screen *_screen)
     screen_write(_screen);
 }
 
-void screen_set_full(screen *_screen, char data)
+void screen_set_full(screen *_screen, wchar data)
 {
     for (uint32 i = 0; i < _screen->height; i++)
     {
@@ -89,7 +90,7 @@ void screen_set_full(screen *_screen, char data)
     }
 }
 
-void screen_set_internal(screen *_screen, char data)
+void screen_set_internal(screen *_screen, wchar data)
 {
     for (uint32 i = 1; i < _screen->height - 1; i++)
     {
@@ -98,7 +99,7 @@ void screen_set_internal(screen *_screen, char data)
     }
 }
 
-void screen_set_edge(screen *_screen, char data)
+void screen_set_edge(screen *_screen, wchar data)
 {
     const uint32 screen_size = _screen->height * (_screen->width + 1);
 
@@ -113,18 +114,18 @@ void screen_set_edge(screen *_screen, char data)
     memset(_screen->buffer + screen_size - (_screen->width + 1), data, _screen->width);
 }
 
-void screen_set_line_ext(screen *_screen, char *data, uint32 data_size, uint8 line_index, uint8 line_offset)
+void screen_set_line_ext(screen *_screen, wchar *data, uint32 data_size, uint8 line_index, uint8 line_offset)
 {
     void *screen_buffer = _screen->buffer + line_offset + line_index * (_screen->width + 1);
     memcpy(screen_buffer, data, data_size);
 }
 
-void screen_set_line(screen *_screen, char *data, uint8 line_index, uint8 line_offset)
+void screen_set_line(screen *_screen, wchar *data, uint8 line_index, uint8 line_offset)
 {
-    screen_set_line_ext(_screen, data, strlen((const char *)data), line_index, line_offset);
+    screen_set_line_ext(_screen, data, wstrlen((const wchar *)data), line_index, line_offset);
 }
 
-void screen_set_lines_ext(screen *_screen, char **data, uint32 data_size, uint8 start_line_index, uint8 line_offset)
+void screen_set_lines_ext(screen *_screen, wchar **data, uint32 data_size, uint8 start_line_index, uint8 line_offset)
 {
     for (uint32 i = 0; i < data_size; i++)
     {
@@ -132,12 +133,12 @@ void screen_set_lines_ext(screen *_screen, char **data, uint32 data_size, uint8 
     }
 }
 
-void screen_set_lines(screen *_screen, char **data, uint8 start_line_index, uint8 line_offset)
+void screen_set_lines(screen *_screen, wchar **data, uint8 start_line_index, uint8 line_offset)
 {
     screen_set_lines_ext(_screen, data, arrlen((const void **)data), start_line_index, line_offset);
 }
 
-void screen_set_column_ext(screen *_screen, char *data, uint32 data_size, uint8 collumn_index, uint8 collumn_offset)
+void screen_set_column_ext(screen *_screen, wchar *data, uint32 data_size, uint8 collumn_index, uint8 collumn_offset)
 {
     for (uint32 i = 0; i < data_size; i++)
     {
@@ -146,12 +147,12 @@ void screen_set_column_ext(screen *_screen, char *data, uint32 data_size, uint8 
     }
 }
 
-void screen_set_column(screen *_screen, char *data, uint8 collumn_index, uint8 collumn_offset)
+void screen_set_column(screen *_screen, wchar *data, uint8 collumn_index, uint8 collumn_offset)
 {
-    screen_set_column_ext(_screen, data, strlen(data), collumn_index, collumn_offset);
+    screen_set_column_ext(_screen, data, wstrlen(data), collumn_index, collumn_offset);
 }
 
-void screen_set_point(screen *_screen, char data, uint8 line_index, uint8 collumn_index)
+void screen_set_point(screen *_screen, wchar data, uint8 line_index, uint8 collumn_index)
 {
     uint32 screen_index = collumn_index + line_index * (_screen->width + 1);
     _screen->buffer[screen_index] = data;

@@ -1,37 +1,38 @@
 /* SYSTEM */
 #include <stdio.h>
+#include <wchar.h>
 /* CUSTOM */
 #include "game.h"
 
 #define SLOT_OFFSET 10
 
-char *menu_title[] = {
-    "[#]==============[#]",
-    "[#]  TELA  MENU  [#]",
-    "[#]==============[#]",
+wchar *menu_title[] = {
+    L"[#]==============[#]",
+    L"[#]  TELA  MENU  [#]",
+    L"[#]==============[#]",
     NULL,
 };
 
-char *menu_info[] = {
-    "[===============================================]",
-    "[]                                             []",
-    "[]                                             []",
-    "[]                                             []",
-    "[]                                             []",
-    "[]                                             []",
-    "[]                                             []",
-    "[===============================================]",
+wchar *menu_info[] = {
+    L"[===============================================]",
+    L"[]                                             []",
+    L"[]                                             []",
+    L"[]                                             []",
+    L"[]                                             []",
+    L"[]                                             []",
+    L"[]                                             []",
+    L"[===============================================]",
     NULL,
 };
 
-char *menu_slot[] = {
-    "[=================================================]",
-    "[] Slot (X)                                      []",
-    "[] Player Name:                                  []",
-    "[] Level:                                        []",
-    "[] Mode:                                         []",
-    "[] Seed:                                         []",
-    "[=================================================]",
+wchar *menu_slot[] = {
+    L"[=================================================]",
+    L"[] Slot (X)                                      []",
+    L"[] Player Name:                                  []",
+    L"[] Level:                                        []",
+    L"[] Mode:                                         []",
+    L"[] Seed:                                         []",
+    L"[=================================================]",
     NULL,
 };
 
@@ -53,10 +54,10 @@ void game_screen_set_menu_slot(screen *_screen, uint32 slot_index)
     profile *_profile = get_profile_slot(slot_index);
     if (_profile)
     {
-        char level[LEVEL_SIZE] = {'\0'}, mode[MODE_SIZE] = {'\0'}, seed[SEED_SIZE] = {'\0'};
-        snprintf(level, LEVEL_SIZE, "%d", _profile->level);
-        snprintf(mode, SEED_SIZE, "Torre[%d]", _profile->mode);
-        snprintf(seed, SEED_SIZE, "%d", _profile->seed);
+        wchar level[LEVEL_SIZE] = {'\0'}, mode[MODE_SIZE] = {'\0'}, seed[SEED_SIZE] = {'\0'};
+        swprintf(level, LEVEL_SIZE, L"%d", _profile->level);
+        swprintf(mode, SEED_SIZE, L"Torre[%d]", _profile->mode);
+        swprintf(seed, SEED_SIZE, L"%d", _profile->seed);
         screen_set_line(_screen, _profile->player_data.name, 8 + offset, 19);
         screen_set_line(_screen, level, 9 + offset, 13);
         screen_set_line(_screen, mode, 10 + offset, 12);
@@ -64,6 +65,6 @@ void game_screen_set_menu_slot(screen *_screen, uint32 slot_index)
     }
     else
     {
-        screen_set_line(_screen, "is empty", 7 + offset, 15);
+        screen_set_line(_screen, L"is empty", 7 + offset, 15);
     }
 }

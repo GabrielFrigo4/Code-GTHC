@@ -10,7 +10,7 @@
 
 typedef struct player
 {
-    char name[PLAYER_NAME_SIZE];
+    wchar name[PLAYER_NAME_SIZE];
 } player;
 
 typedef struct profile
@@ -24,7 +24,7 @@ typedef struct profile
 profile *get_profile_slot(uint32 slot_index);
 void set_profile_slot(uint32 slot_index, profile *_profile);
 void remove_profile_slot(uint32 slot_index);
-player create_player(const char *player_name);
+player create_player(const wchar *player_name);
 profile *create_profile(uint64 level, uint64 mode, uint64 seed, player _player);
 profile *clone_profile(profile *_profile);
 profile *destroy_profile(profile *_profile);

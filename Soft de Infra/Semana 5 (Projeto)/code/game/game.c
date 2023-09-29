@@ -3,38 +3,38 @@
 /* CUSTOM */
 #include "game.h"
 
-char *template_comandos_gerais[] = {
-    "[=====================================]",
-    "[] Comandos gerais:                  []",
-    "[] #init  = vai para a tela inicial  []",
-    "[] #menu  = vai para o menu do jogo  []",
-    "[] #exit  = sai do jogo              []",
-    "[=====================================]",
+wchar *template_comandos_gerais[] = {
+    L"[=====================================]",
+    L"[] Comandos gerais:                  []",
+    L"[] #init  = vai para a tela inicial  []",
+    L"[] #menu  = vai para o menu do jogo  []",
+    L"[] #exit  = sai do jogo              []",
+    L"[=====================================]",
     NULL,
 };
 
-char *template_comandos_menu[] = {
-    "[===============================]",
-    "[] Comandos do menu:           []",
-    "[] $slot1 = seleciona o slot 1 []",
-    "[] $slot2 = seleciona o slot 2 []",
-    "[] $slot3 = seleciona o slot 3 []",
-    "[] $dels1 = deleta o slot 1    []",
-    "[] $dels2 = deleta o slot 2    []",
-    "[] $dels3 = deleta o slot 3    []",
-    "[===============================]",
+wchar *template_comandos_menu[] = {
+    L"[===============================]",
+    L"[] Comandos do menu:           []",
+    L"[] $slot1 = seleciona o slot 1 []",
+    L"[] $slot2 = seleciona o slot 2 []",
+    L"[] $slot3 = seleciona o slot 3 []",
+    L"[] $dels1 = deleta o slot 1    []",
+    L"[] $dels2 = deleta o slot 2    []",
+    L"[] $dels3 = deleta o slot 3    []",
+    L"[===============================]",
     NULL,
 };
 
-char *template_comandos_player[] = {
-    "[=========================]",
-    "[] Comandos do player:   []",
-    "[] w = anda pra cima     []",
-    "[] s = anda pra baixo    []",
-    "[] a = anda pra esquerda []",
-    "[] d = anda pra direita  []",
-    "[] e = anda pra direita  []",
-    "[=========================]",
+wchar *template_comandos_player[] = {
+    L"[=========================]",
+    L"[] Comandos do player:   []",
+    L"[] w = anda pra cima     []",
+    L"[] s = anda pra baixo    []",
+    L"[] a = anda pra esquerda []",
+    L"[] d = anda pra direita  []",
+    L"[] e = anda pra direita  []",
+    L"[=========================]",
     NULL,
 };
 
@@ -127,8 +127,8 @@ int GAME_main()
 
 void game_set_screen_template(screen *_screen)
 {
-    screen_set_edge(_screen, '#');
-    screen_set_internal(_screen, '.');
+    screen_set_edge(_screen, L'#');
+    screen_set_internal(_screen, L'.');
     screen_set_lines(_screen, template_comandos_gerais, 6, 114);
     screen_set_lines(_screen, template_comandos_menu, 14, 114);
     screen_set_lines(_screen, template_comandos_player, 25, 114);

@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <wchar.h>
 
 typedef uint64_t uint64;
 typedef int64_t sint64;
@@ -9,6 +10,7 @@ typedef int16_t sint16;
 typedef uint8_t uint8;
 typedef int8_t sint8;
 typedef uint32 bool;
+typedef wchar_t wchar;
 
 #define TRUE 1
 #define true TRUE

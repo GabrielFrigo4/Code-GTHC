@@ -4,6 +4,7 @@
 #include <stdio.h>
 /* CUSTOM */
 #include "profile.h"
+#include "utils.h"
 #include "rand.h"
 
 const char *slots_path[] = {
@@ -43,15 +44,15 @@ void remove_profile_slot(uint32 slot_index)
     remove(slots_path[slot_index]);
 }
 
-player create_player(const char *player_name)
+player create_player(const wchar *player_name)
 {
-    player _player = {{'\0'}};
-    uint32 name_size = strlen(player_name);
+    player _player = {{L'\0'}};
+    uint32 name_size = wstrlen(player_name);
     if (PLAYER_NAME_SIZE <= name_size)
     {
         name_size = PLAYER_NAME_SIZE - 1;
     }
-    memcpy(_player.name, player_name, name_size);
+    memcpy(_player.name, player_name, name_size * sizeof(wchar));
     return _player;
 }
 
