@@ -8,10 +8,12 @@
 ;; System V AMD64 ABI:
 ;; https://hackeradam.com/x86-64-calling-conventions/
 
-;; NULL = 0
-;; STDIN = 1
-;; STDOUT = 2
-;; STDERR = 3
+;; File Descriptor
+;; https://mentebinaria.gitbook.io/assembly/a-base/ola-mundo-no-linux
+
+;; STDIN = 0
+;; STDOUT = 1
+;; STDERR = 2
 
 global _start
 
@@ -22,7 +24,7 @@ msgLen: equ $ - msg
 section .text
 _start:
 	mov rax, 1      ;; SYS_WRITE = 1
-	mov rdi, 1      ;; STDIN = 1
+	mov rdi, 1      ;; STDOUT = 1
 	mov rsi, msg    ;; buf = msg
 	mov rdx, msgLen ;; count = msgLen
 	syscall         ;; Inicia a Interrupção
