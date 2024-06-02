@@ -1,19 +1,37 @@
 * Começando com Assembly
-  Esses projetos têm como propósito mostrar o mundo *low level* do
-  jeito que ele veio ao *mundo* usando o [[https://orgmode.org/features.html][org-mode]] do [[https://www.gnu.org/software/emacs/][Emacs]]
+Esses projetos têm como propósito mostrar o mundo *low level* do
+jeito que ele veio ao *mundo* usando o [[https://orgmode.org/features.html][org-mode]] do [[https://www.gnu.org/software/emacs/][Emacs]]
 
 ** Sobre o arquivo ".org"
-   Essa extensão de arquivo ".org" se refere ao [[https://orgmode.org/features.html][org-mode]] do [[https://www.gnu.org/software/emacs/][Emacs]]
-   apesar do emacs ser o único editor que tem nativamente esse modo
-   eu acredito que é possível editar e ler esse arquivo com certa
-   facilidade em outros editores de texto e editores de código
+Essa extensão de arquivo ".org" se refere ao [[https://orgmode.org/features.html][org-mode]] do [[https://www.gnu.org/software/emacs/][Emacs]]
+apesar do emacs ser o único editor que tem nativamente esse modo
+eu acredito que sejá possível editar e ler esse arquivo com certa
+facilidade em outros editores de texto e editores de código
 
 ** Introdução
-   Nessa introdução vamos usar o [[https://pt.wikipedia.org/wiki/Linguagem_assembly][Assembly]] [[https://pt.wikipedia.org/wiki/AMD64][x86-64]] com o [[https://pt.wikipedia.org/wiki/Linguagem_assembly#Montador][Assembler]] [[https://www.nasm.us/][NASM]]
+Nessa introdução vamos usar o [[https://pt.wikipedia.org/wiki/Linguagem_assembly][Assembly]] [[https://pt.wikipedia.org/wiki/AMD64][x86-64]] com o [[https://pt.wikipedia.org/wiki/Linguagem_assembly#Montador][Assembler]] [[https://www.nasm.us/][NASM]]
 
 ** Low Level
-** Assembly x C x Rust
-   Código em Assembly
+As principais linguagens *low level* são *Assembly*, *C*, *C++* e *Rust*.
+Existem outras linguagems, pórem estão caindo no desuso ou são muito recentes
+e não são muito usadar por isso.
+
+Obsoletas: *[[https://www.freepascal.org/][Pascal]]* entre outras
+
+Recentes: *[[https://ziglang.org/][Zig]]* entre outras
+
+** Linguagem Assembly
+
+** Linguagem C
+
+** Linguagem C++
+
+** Linguagem Rust
+
+** Assembly x C x C++ x Rust
+Aqui temos 4 códigos de escrevem *"Hello World!"* no Console
+
+Código em *Assembly*:
 #+BEGIN_SRC nasm
 global _start
 
@@ -36,7 +54,7 @@ _start:
 	ret
 #+END_SRC
 
-   Código em C
+Código em *C*:
 #+BEGIN_SRC c
 #include <stdio.h>
 
@@ -46,7 +64,17 @@ int main(int argc, char **argv) {
 }
 #+END_SRC
 
-   Código em Rust
+Código em *C++*:
+#+BEGIN_SRC cpp
+#include <iostream>
+
+int main(int argc, char **argv) {
+	std::cout << "Hello World!";
+	return 0;
+}
+#+END_SRC
+
+Código em *Rust*:
 #+BEGIN_SRC rust
 fn main() {
 	println!("Hello World");
