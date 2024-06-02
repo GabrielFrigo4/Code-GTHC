@@ -1,0 +1,56 @@
+* Começando com Assembly
+  Esses projetos têm como propósito mostrar o mundo *low level* do
+  jeito que ele veio ao *mundo* usando o [[https://orgmode.org/features.html][org-mode]] do [[https://www.gnu.org/software/emacs/][Emacs]]
+
+** Sobre o arquivo ".org"
+   Essa extensão de arquivo ".org" se refere ao [[https://orgmode.org/features.html][org-mode]] do [[https://www.gnu.org/software/emacs/][Emacs]]
+   apesar do emacs ser o único editor que tem nativamente esse modo
+   eu acredito que é possível editar e ler esse arquivo com certa
+   facilidade em outros editores de texto e editores de código
+
+** Introdução
+   Nessa introdução vamos usar o [[https://pt.wikipedia.org/wiki/Linguagem_assembly][Assembly]] [[https://pt.wikipedia.org/wiki/AMD64][x86-64]] com o [[https://pt.wikipedia.org/wiki/Linguagem_assembly#Montador][Assembler]] [[https://www.nasm.us/][NASM]]
+
+** Low Level
+** Assembly x C x Rust
+   Código em Assembly
+#+BEGIN_SRC nasm
+global _start
+
+section .data
+msg: db `Hello World!\n\0`
+msg_len: equ $ - msg
+
+section .text
+_start:
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, msg
+	mov rdx, msg_len
+	syscall
+
+	mov rax, 60
+	mov rdi, 0
+	syscall
+
+	ret
+#+END_SRC
+
+   Código em C
+#+BEGIN_SRC c
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+	printf("Hello World\n");
+	return 0;
+}
+#+END_SRC
+
+   Código em Rust
+#+BEGIN_SRC rust
+fn main() {
+	println!("Hello World");
+}
+#+END_SRC
+
+** Paradigmas de Programação
