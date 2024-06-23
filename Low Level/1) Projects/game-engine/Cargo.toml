@@ -4,3 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+vulkano = "*"
+vulkano-shaders = "*"
+vulkano-win = "*"
+winit = "*"
+cpal = "*"
+ocl = "*"
