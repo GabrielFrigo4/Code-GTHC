@@ -15,6 +15,10 @@ int main(void){
     printf("%s\n", data.key);
     printf("%i\n", data.level);
 
+    if(data.key[0] == '0'){
+        data.level = 1;
+    }
+
     if(!data.level){
         printf("bloqueado!\n");
     }
