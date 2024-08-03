@@ -1,8 +1,15 @@
 use std::fs::File;
+use std::hash::{DefaultHasher, Hash, Hasher};
 use std::io;
 use std::io::prelude::*;
 use std::io::BufReader;
 use std::path::Path;
+
+fn calculate_hash<T: Hash>(t: &T) -> u64 {
+    let mut s = DefaultHasher::new();
+    t.hash(&mut s);
+    s.finish()
+}
 
 fn main() -> std::io::Result<()> {
     let stdin = io::stdin();
@@ -18,10 +25,13 @@ fn main() -> std::io::Result<()> {
     let mut password = String::new();
     stdin.read_line(&mut password)?;
     password = password.replace("\n", "");
+    password.push_str(":\"to_hash(1234567890!@#$%¨&*)\"");
+    let hash_password = calculate_hash(&password);
 
     let mut filename = String::new();
     filename.push_str(&username);
-    filename.push_str(&password);
+    filename.push_str(":");
+    filename.push_str(&hash_password.to_string());
     let exist = Path::new(&filename).is_file();
     let mut content = String::new();
     if exist {
@@ -35,7 +45,6 @@ fn main() -> std::io::Result<()> {
     println!("datafile: ");
     let mut datafile = String::new();
     stdin.read_line(&mut datafile)?;
-    datafile = datafile.replace("\n", "");
 
     let mut file = File::create(&filename)?;
     file.write_all(datafile.as_bytes())?;
