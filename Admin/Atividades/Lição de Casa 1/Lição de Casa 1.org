@@ -1,0 +1,16 @@
+* Atividade Prática (Heap e Stack no C)
+
+* Atividade para Pensar (Memória no C)
+
+* Comando de Compilação
+
+** Shell
+#+BEGIN_SRC sh
+gcc -O3 -std=c17 <arquivos *.c> -o <executável>
+#+END_SRC
+
+** Make
+#+BEGIN_SRC makefile
+default:
+	gcc -O3 -std=c17 <arquivos *.c> -o <executável>
+#+END_SRC
