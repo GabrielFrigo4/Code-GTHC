@@ -1,6 +1,80 @@
-* Atividade Prática (Heap e Stack no C)
+* Atividade Pratica!
 
-* Atividade para Pensar (Memória no C)
+** (1) Heap Memory
+É uma atividade pratica.
+ - [Allocation](https://www.gnu.org/software/libc/manual/html_node/Unconstrained-Allocation.html)
+ - [Summary of malloc-Related Functions](https://www.gnu.org/software/libc/manual/html_node/Summary-of-Malloc.html)
+
+** (2) Stack Memory
+É uma atividade de analise.
+ - [The Stack, And Stack Overflow](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Stack.html)
+
+** (3) Buffer Overflow
+É uma atividade de analise.
+ - [why do hackers love strings?](https://www.youtube.com/watch?v=fjMrDDj47E8)
+
+** Referências de C
+ - [The GNU C Library](https://www.gnu.org/software/libc/manual/html_node/)
+ - [The GNU C Reference Manual](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)
+ - [C Implementation-Defined Behavior](https://gcc.gnu.org/onlinedocs/gcc/C-Implementation.html)
+
+** Ferramentas
+ - [Compiler Explorer](https://godbolt.org/)
+
+* (1) Heap Memory - O Jogo da Memorização
+
+Todo mundo tem um amigo meio "lé-lé da cuca", e você não é diferente. Conheça o Joãozinho: ele é o seu amigo mais doido da face da Terra, e, como era de se esperar, ele te desafiou para um desafio sem sentido aparente.
+
+Só para você entender com quem está lidando, ele é um daqueles caras que decora centenas de dígitos de Pi porque acha divertido... Vai entender!
+
+Bom, o grande desafio dele é você ganhar no X1 contra ele na memorização, e vai funcionar assim: ele vai falar o máximo de números que conseguir, e você deve memorizar na ordem que ele falar, até quando ele cansar – ou seja, pode ser com 5 números ou centenas... Após ele dizer os números, ele vai querer checar se você realmente memorizou, então fará algumas perguntas, como "Qual número está na posição 5?" ou "Quais números estão entre as posições 5 e 7?". Se você conseguir acertar tudo, ele vai te dar um bombom de chocolate de uma marca duvidosa; se você perder, ele vai querer te levar para a UFABC (medo genuíno). Aparentemente, isso não é um bom acordo, mas ele te deixou usar absolutamente tudo ao seu alcance para te ajudar, como um amigo, um parente, papel e lápis, ou um punhado de silício que você chama de computador... O problema é que ele não manja da computaria e não sabe que uma "pedra" (o seu PC/notebook) é capaz de armazenar informações, sabe? E como você quer esse bombom a qualquer custo, pretende criar um código para te ajudar nessa jornada assustadora!
+
+Como você teve uma ideia de jerico de aprender C, usará essa linguagem para derrotar o Joãozinho. O problema é que não existem estruturas de dados prontas em C, como listas ou vetores dinâmicos... Então, use as ferramentas básicas do C a seu favor!
+
+* (2) Stack Memory - Mais um pra BCC...
+
+Joãozinho, após perder miseravelmente para você, decidiu aprender as técnicas mágicas de conversar com as pedras de silício e obter resultados desejáveis.
+
+Com isso, ele decidiu propor outro desafio. Para esse desafio, ele criou um SUPER CÓDIGO EM C. O desafio é o seguinte: Joãozinho vai escolher um número positivo qualquer, e você precisará adivinhar qual é o número escolhido por ele. Você só tem uma chance. Para isso, ele criou um código que será o juiz, garantindo que ninguém possa trapacear (mudar o número depois da escolha final ou espiar o número escolhido previamente). Bom, é isso que ele acredita, pelo menos...
+
+E como Joãozinho é muito orgulhoso, ele fez questão de mostrar para você o código que criou e, ainda por cima, o comando que usou para compilar e executar o código. Já que ca cabeça dele, ele acha que está ensinando algo a você, rsrs.
+
+A sua missão é simples: Você precisa vencê-lo novamente, simplesmente para mostrar a ele que a vida não é fácil e que, se existe um código em C, também existe uma maneira de burlá-lo.
+
+** Código C
+#+BEGIN_SRC c
+#include <stdio.h>
+
+long get_choice() {
+	long choice;
+	long input;
+
+	while(scanf("%li", &input) != EOF && input > -1) {
+		choice = input;
+	}
+	return choice;
+}
+
+int main(void) {
+	long choice_joaozinho = get_choice();
+	long choice_sua = get_choice();
+
+	if (choice_joaozinho == choice_sua) {
+		printf("Acertou!! é %li! Mas COMO???", choice_joaozinho);
+	}
+	else {
+		printf("Errou! Era %li e não %li...", choice_joaozinho, choice_sua);
+	}
+	return 0;
+}
+#+END_SRC
+
+** Comando Shell
+#+BEGIN_SRC sh
+gcc -O0 -std=c17 <arquivos *.c> -o <executável>
+#+END_SRC
+
+* (3) 
 
 * Comando de Compilação
 

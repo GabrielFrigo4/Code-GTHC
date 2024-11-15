@@ -3,8 +3,8 @@
 vector_t *vector_new(size_t size) {
 	vector_t *vector = (vector_t *)malloc(sizeof(vector_t *));
 	vector->size = size;
-	vector->reserve = (size) + (size == 0);
-	vector->vec = (int *)calloc(vector->reserve, sizeof(int));
+	vector->reserve = (1 << ((sizeof(long)*8) - __builtin_clzl(size))) + (size == 0);
+	vector->vec = (long *)calloc(vector->reserve, sizeof(long));
 	return vector;
 }
 
@@ -13,7 +13,7 @@ void vector_delete(vector_t *vector) {
 	free(vector);
 }
 
-int vector_at(vector_t *vector, size_t index) {
+long vector_at(vector_t *vector, size_t index) {
 	if (vector->size > index) {
 		return vector->vec[index];
 	}
@@ -24,15 +24,15 @@ size_t vector_size(vector_t *vector) {
 	return vector->size;
 }
 
-void vector_push(vector_t *vector, int element) {
+void vector_push(vector_t *vector, long element) {
 	if (vector->size >= vector->reserve) {
 		vector->reserve *= 2;
-		vector->vec = (int *)realloc(vector->vec, vector->reserve * sizeof(int));
+		vector->vec = (long *)realloc(vector->vec, vector->reserve * sizeof(long));
 	}
 	vector->vec[vector->size++] = element;
 }
 
-int vector_pop(vector_t *vector) {
+long vector_pop(vector_t *vector) {
 	if (vector->size <= 0) {
 		return 0;
 	}
@@ -40,5 +40,5 @@ int vector_pop(vector_t *vector) {
 }
 
 void vector_reserve(vector_t *vector, size_t reserve) {
-	vector->vec = (int *)realloc(vector->vec, reserve * sizeof(int));
+	vector->vec = (long *)realloc(vector->vec, reserve * sizeof(long));
 }
