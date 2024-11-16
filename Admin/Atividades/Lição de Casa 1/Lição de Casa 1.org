@@ -11,7 +11,7 @@
 
 ** (3) Buffer Overflow
 É uma atividade de analise.
- - [[https://www.youtube.com/watch?v=fjMrDDj47E8][why do hackers love strings?]]
+ - [[https://www.youtube.com/watch?v=fjMrDDj47E8][Why do hackers love strings?]]
 
 ** Referências de C
  - [[https://www.gnu.org/software/libc/manual/html_node/][The GNU C Library]]
@@ -80,7 +80,7 @@ Joãozinho está puto com as duas derrotas consecutivas, isso nunca tinha aconte
 
 E como de costume, Joãozinho te desafiou no X1 de novo... E agora vai ser no seu novo videogame, que funciona da seguinte maneira: você escolhe um nome, e se quiser, pode mudar o seu poder e a sua vida. Porém, a sua vida e o poder devem ser ambos números positivos, e a multiplicação deles não deve passar dos `1e5` (`100.000`). E como de costume, se você ganhar, irá receber um presente misterioso; se perder, irá para a UFABC.
 
-Bom, é claro que o código do Joãozinho tem falhas, já que foi feito em C (mesmo usando a opção `-O3` e tendo todas as flags de segurança ativadas). Ache essas falhas e vença dele no X1!
+Bom, é claro que o código do Joãozinho tem falhas, já que foi feito em C (mesmo usando a opção ~-O3~ e tendo todas as flags de segurança ativadas). Ache essas falhas e vença dele no X1!
 
 ** Código C
 #+BEGIN_SRC c
