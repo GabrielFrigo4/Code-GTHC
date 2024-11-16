@@ -2,24 +2,24 @@
 
 ** (1) Heap Memory
 É uma atividade pratica.
- - [[Allocation][https://www.gnu.org/software/libc/manual/html_node/Unconstrained-Allocation.html]]
- - [[Summary of malloc-Related Functions][https://www.gnu.org/software/libc/manual/html_node/Summary-of-Malloc.html]]
+ - [[https://www.gnu.org/software/libc/manual/html_node/Unconstrained-Allocation.html][Allocation]]
+ - [[https://www.gnu.org/software/libc/manual/html_node/Summary-of-Malloc.html][Summary of malloc-Related Functions]]
 
 ** (2) Stack Memory
 É uma atividade de analise.
- - [The Stack, And Stack Overflow](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Stack.html)
+ - [[https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Stack.html][The Stack, And Stack Overflow]]
 
 ** (3) Buffer Overflow
 É uma atividade de analise.
- - [why do hackers love strings?](https://www.youtube.com/watch?v=fjMrDDj47E8)
+ - [[https://www.youtube.com/watch?v=fjMrDDj47E8][why do hackers love strings?]]
 
 ** Referências de C
- - [The GNU C Library](https://www.gnu.org/software/libc/manual/html_node/)
- - [The GNU C Reference Manual](https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)
- - [C Implementation-Defined Behavior](https://gcc.gnu.org/onlinedocs/gcc/C-Implementation.html)
+ - [[https://www.gnu.org/software/libc/manual/html_node/][The GNU C Library]]
+ - [[https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html][The GNU C Reference Manual]]
+ - [[https://gcc.gnu.org/onlinedocs/gcc/C-Implementation.html][C Implementation-Defined Behavior]]
 
 ** Ferramentas
- - [Compiler Explorer](https://godbolt.org/)
+ - [[https://godbolt.org/][Compiler Explorer]]
 
 * (1) Heap Memory - O Jogo da Memorização
 
@@ -82,7 +82,7 @@ E como de costume, Joãozinho te desafiou no X1 de novo... E agora vai ser no se
 
 Bom, é claro que o código do Joãozinho tem falhas, já que foi feito em C (mesmo usando a opção `-O3` e tendo todas as flags de segurança ativadas). Ache essas falhas e vença dele no X1!
 
-## Código C
+** Código C
 #+BEGIN_SRC c
 #include <stdio.h>
 #include <stdlib.h>
@@ -173,7 +173,7 @@ int main(void) {
 }
 #+END_SRC
 
-## Código Shell
+** Código Shell
 #+BEGIN_SRC sh
 gcc -O3 -std=c17 <arquivos *.c> -o <executável>
 #+END_SRC
