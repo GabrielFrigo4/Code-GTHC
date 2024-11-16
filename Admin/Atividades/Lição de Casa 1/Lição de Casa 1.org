@@ -76,9 +76,9 @@ gcc -O0 -std=c17 <arquivos *.c> -o <executável>
 
 * (3) Buffer Overflow - O Game Dev
 
-Joãozinho está puto com as duas derrotas consecutivas, isso nunca tinha acontecido antes. Porém, Joãozinho é persistente, ele não vai parar até se tornar um mestre na arte da computação, e agora, ele sabe que não basta apenas escrever o código, é importante saber como compilá-lo também (`-O0` vs `-O3` na otimização e segurança).
+Joãozinho está puto com as duas derrotas consecutivas, isso nunca tinha acontecido antes. Porém, Joãozinho é persistente, ele não vai parar até se tornar um mestre na arte da computação, e agora, ele sabe que não basta apenas escrever o código, é importante saber como compilá-lo também (~-O0~ vs ~-O3~ na otimização e segurança).
 
-E como de costume, Joãozinho te desafiou no X1 de novo... E agora vai ser no seu novo videogame, que funciona da seguinte maneira: você escolhe um nome, e se quiser, pode mudar o seu poder e a sua vida. Porém, a sua vida e o poder devem ser ambos números positivos, e a multiplicação deles não deve passar dos `1e5` (`100.000`). E como de costume, se você ganhar, irá receber um presente misterioso; se perder, irá para a UFABC.
+E como de costume, Joãozinho te desafiou no X1 de novo... E agora vai ser no seu novo videogame, que funciona da seguinte maneira: você escolhe um nome, e se quiser, pode mudar o seu poder e a sua vida. Porém, a sua vida e o poder devem ser ambos números positivos, e a multiplicação deles não deve passar dos ~1e5~ (~100.000~). E como de costume, se você ganhar, irá receber um presente misterioso; se perder, irá para a UFABC.
 
 Bom, é claro que o código do Joãozinho tem falhas, já que foi feito em C (mesmo usando a opção ~-O3~ e tendo todas as flags de segurança ativadas). Ache essas falhas e vença dele no X1!
 
