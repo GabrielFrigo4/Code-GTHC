@@ -31,7 +31,7 @@ Bom, o grande desafio dele é você ganhar no X1 contra ele na memorização, e 
 
 Como você teve uma ideia de jerico de aprender C, usará essa linguagem para derrotar o Joãozinho. O problema é que não existem estruturas de dados prontas em C, como listas ou vetores dinâmicos... Então, use as ferramentas básicas do C a seu favor!
 
-* (2) Stack Memory - Mais um pra BCC...
+* (2) Stack Memory - Mais um pro BCC...
 
 Joãozinho, após perder miseravelmente para você, decidiu aprender as técnicas mágicas de conversar com as pedras de silício e obter resultados desejáveis.
 
