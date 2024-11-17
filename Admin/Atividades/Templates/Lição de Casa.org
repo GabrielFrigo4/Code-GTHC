@@ -1,0 +1,22 @@
+* Atividade Pratica!
+
+** Referências de C
+ - [[https://www.gnu.org/software/libc/manual/html_node/][The GNU C Library]]
+ - [[https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html][The GNU C Reference Manual]]
+ - [[https://gcc.gnu.org/onlinedocs/gcc/C-Implementation.html][C Implementation-Defined Behavior]]
+
+** Ferramentas
+ - [[https://godbolt.org/][Compiler Explorer]]
+
+* Comando de Compilação
+
+** Shell
+#+BEGIN_SRC sh
+gcc -O3 -std=c17 <arquivos *.c> -o <executável>
+#+END_SRC
+
+** Make
+#+BEGIN_SRC makefile
+default:
+	gcc -O3 -std=c17 <arquivos *.c> -o <executável>
+#+END_SRC
