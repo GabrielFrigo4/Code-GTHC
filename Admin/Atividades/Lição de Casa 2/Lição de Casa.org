@@ -2,7 +2,7 @@
 
 ** (1) Array
 É uma atividade pratica.
- - [Arrays](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Arrays.html)
+ - [[https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Arrays.html][Arrays]]
 
 ** Referências de C
  - [[https://www.gnu.org/software/libc/manual/html_node/][The GNU C Library]]
