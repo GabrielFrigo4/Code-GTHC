@@ -1,5 +1,9 @@
 * Atividade Pratica!
 
+** (1) Array
+É uma atividade pratica.
+ - [Arrays](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Arrays.html)
+
 ** Referências de C
  - [[https://www.gnu.org/software/libc/manual/html_node/][The GNU C Library]]
  - [[https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html][The GNU C Reference Manual]]
@@ -7,6 +11,70 @@
 
 ** Ferramentas
  - [[https://godbolt.org/][Compiler Explorer]]
+
+* (1) Array - Um jogo Unidimensional!
+
+Após a terceira derrota do Joãozinho, ele decide te desafiar a criar um jogo com apenas 1 DIMENSÃO! Imagina um jogo unidimensional... Pois é, é exatamente isso que ele quer que você crie. Mas, para isso, ele criou toda a lógica do jogo e você precisa "apenas" implementar (a ideia do moleque). E tudo isso só para testar as suas habilidades com a computação (ele duvida de suas CAPACIDADES!!). Bom, o jogo é um caça ao tesouro, nele terá uma lista ordenada (use ~qsort~) com ~N~ elementos gerados aleatoriamente (use a função ~rand~ e ~srand~, ou se você for doido da cabeça, use [sdseed](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#techs=MMX,Other&text=rdseed)). O jogador deverá achar um número escolhido aleatoriamente dessa lista. O jogo tem 2 modos:
+
+** (1, fácil):
+Se o jogador chutar uma posição que não contém o número desejado, o jogo irá dizer que ele achou um número maior ou menor que o desejado. O objetivo é achar o número desejado na menor quantidade possível de chutes.
+
+** (2, difícil):
+Se o jogador chutar uma posição que contém um número maior que o desejado, ele perde uma vida; se o número achado for menor, o jogo avisa que ele achou um número menor que o desejado e ele não perde uma vida. O jogador vai ter ~K~ vidas. O objetivo é achar o número desejado na menor quantidade possível de chutes.
+
+** (obs):
+As posições são 0 indexado, ou seja, são ~0, 1, 2... N-1~ para uma lista de ~N~ posições!!!
+
+** FÁCIL
+
+#+BEGIN_SRC sh
+$ ./stack
+GAME_1D!
+MODO (1:IZI, 2:RARD):
+$ 1
+IZI (OwO) ...
+MAPA GERADO!
+SIZE => <tamanho_array>
+MIN => <valor_mínimo>
+MAX => <valor_máximo>
+GOLD => <valor_objetivo>
+posição:
+$ <chute>
+uff quase, o número achado é menor
+posição:
+$ <chute>
+uff quase, o número achado é maior
+posição:
+$ <chute>
+O_O, slk se achou o OURO, BOA!
+#+END_SRC
+
+** DIFÍCIL
+
+#+BEGIN_SRC sh
+$ ./stack
+GAME_1D!
+MODO (1:IZI, 2:RARD):
+$ 2
+RARD (O_o) ...
+MAPA GERADO!
+SIZE => <tamanho_array>
+MIN => <valor_mínimo>
+MAX => <valor_máximo>
+GOLD => <valor_objetivo>
+HEALTH => <quantidade_vidas>
+posição:
+$ <chute>
+uff quase, o número achado é menor
+posição:
+$ <chute>
+aiai, o número achado é maior, perdeu uma vida...
+posição:
+$ <chute>
+O_O, slk se achou o OURO, BOA!
+$ <chute>
+aiai, o número achado é maior, perdeu a sua última vida, F...
+#+END_SRC
 
 * Comando de Compilação
 
