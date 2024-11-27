@@ -87,7 +87,7 @@ void game_rard() {
         }
         else if (map[pos] > map[gold_pos]) {
             printf("aiai, o número achado é maior, perdeu a sua última vida, F...\n");
-            exit(-1);
+            return;
         }
         if (map[pos] < map[gold_pos]) {
             printf("uff quase, o número achado é menor\n");
