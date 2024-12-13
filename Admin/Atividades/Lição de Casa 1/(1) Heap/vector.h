@@ -1,5 +1,5 @@
-#include <stdbool.h>
-#include <stdlib.h>
+#include <stdint.h>
+#include <stddef.h>
 
 typedef struct vector_t {
 	size_t size;

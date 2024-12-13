@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "vector.h"
 
 vector_t *vector_new(size_t size) {
