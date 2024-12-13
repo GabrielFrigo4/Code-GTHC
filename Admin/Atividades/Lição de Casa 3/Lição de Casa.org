@@ -18,8 +18,8 @@ Após mais uma derrota na cara do Joãozinho, ele decidiu dar um "tempo"...
 Enquanto isso, você terá um "tempo" para fazer uns projetinhos que você quer fazer. Como você não sabe quais dos projetos vai começar a fazer, acabou decidindo que vai criar um projeto que te ajudará a escolher qual projeto fazer. E, obviamente, esse projeto é uma "Lista de Projetos". Como você ainda não é o arquimago da computação, você decidiu fazer uma versão "beta" desse projeto, já que ele será bem limitado inicialmente.
 
 Essa Lista de Projetos terá as seguintes funcionalidades:
-	*1.* Adicionar um projeto no começo da lista.
-	*2.* Pegar um projeto no final da lista, o que irá eventualmente remover esse mesmo projeto da lista.
+1. Adicionar um projeto no começo da lista.
+2. Pegar um projeto no final da lista, o que irá eventualmente remover esse mesmo projeto da lista.
 
 Em suma, você está criando uma pilha de projetos, já que a ideia se baseia no fato de que grande parte dos seus projetos são uma porcaria, e você só os fez porque não parou para pensar direito. Logo, agora, com essa restrição, você irá pensar muito antes de fazer ou descartar um projeto.
 
