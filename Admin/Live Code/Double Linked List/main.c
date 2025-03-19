@@ -9,7 +9,7 @@ int main(void) {
 	// Acess List Length
 	printf("list->len = %i\n", list->len);
 
-	// Push Back [1; 20] Nodes
+	// Push Back [1; 20] Elements
 	for (int i = 0; i < 20; i++) {
 		int *buff = (int *)malloc(sizeof(int));
 		*buff = i;
@@ -18,8 +18,8 @@ int main(void) {
 
 	// Acess List Length
 	printf("list->len = %i\n", list->len);
-	
-	// Push Front [1; 20] Nodes
+
+	// Push Front [1; 20] Elements
 	for (int i = 0; i < 20; i++) {
 		int *buff = (int *)malloc(sizeof(int));
 		*buff = i;
@@ -28,20 +28,20 @@ int main(void) {
 
 	// Acess List Length
 	printf("list->len = %i\n", list->len);
-	
-	// Pop Back and Pop Front Nodes
+
+	// Pop Back and Pop Front Elements
 	list_pop_back(list, free);
 	list_pop_front(list, free);
 
 	// Acess List Length
 	printf("list->len = %i\n", list->len);
 
-	// Acess Nodes in Double Linked List
-	for (struct node *node = list->head; node != nullptr; node = node->next) {
-		printf("Node Value: %i\n", *(int *)(node->buff));
+	// Acess Elements in Double Linked List
+	for (struct list_it *list_it = list->head; list_it != nullptr; list_it = list_it->next) {
+		printf("Element Value: %i\n", *(int *)(list_it->buff));
 	}
 
-	// Pop Back and Pop Front [0; 32] Nodes
+	// Pop Back and Pop Front [0; 32] Elements
 	for (int i = 0; i < 32; i++) {
 		list_pop_back(list, free);
 		list_pop_front(list, free);

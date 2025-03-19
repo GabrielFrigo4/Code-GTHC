@@ -1,17 +1,17 @@
-struct node {
-	struct node *prev;
-	struct node *next;
+struct list_it {
+	struct list_it *prev;
+	struct list_it *next;
 	void *buff;
 };
 
 struct list {
-	struct node *head;
-	struct node *tail;
+	struct list_it *head;
+	struct list_it *tail;
 	int len;
 };
 
-struct node *node_new();
-void node_delete(struct node *node, void (*delete)(void *));
+struct list_it *list_it_new();
+void list_it_delete(struct list_it *list_it, void (*delete)(void *));
 struct list *list_new();
 void list_delete(struct list *list, void (*delete)(void *));
 void list_push_back(struct list *list, void *buff);

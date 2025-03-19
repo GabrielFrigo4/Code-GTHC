@@ -1,19 +1,19 @@
 #include <stdlib.h>
 #include "list.h"
 
-struct node *node_new() {
-	struct node *node = (struct node *)malloc(sizeof(struct node));
-	node->prev = nullptr;
-	node->next = nullptr;
-	node->buff = nullptr;
-	return node;
+struct list_it *list_it_new() {
+	struct list_it *list_it = (struct list_it *)malloc(sizeof(struct list_it));
+	list_it->prev = nullptr;
+	list_it->next = nullptr;
+	list_it->buff = nullptr;
+	return list_it;
 }
 
-void node_delete(struct node *node, void (*delete)(void *)) {
+void list_it_delete(struct list_it *list_it, void (*delete)(void *)) {
 	if (delete != nullptr) {
-		delete(node->buff);
+		delete(list_it->buff);
 	}
-	free(node);
+	free(list_it);
 }
 
 struct list *list_new() {
@@ -25,43 +25,43 @@ struct list *list_new() {
 }
 
 void list_delete(struct list *list, void (*delete)(void *)) {
-	for (struct node *node = list->head; node != list->tail; node = node->next) {
-		if (node->prev != nullptr) {
-			node_delete(node->prev, delete);
+	for (struct list_it *list_it = list->head; list_it != list->tail; list_it = list_it->next) {
+		if (list_it->prev != nullptr) {
+			list_it_delete(list_it->prev, delete);
 		}
 	}
 	if (list->tail != nullptr) {
-		node_delete(list->tail, delete);
+		list_it_delete(list->tail, delete);
 	}
 	free(list);
 }
 
 void list_push_back(struct list *list, void *buff) {
-	struct node *node = node_new();
-	node->buff = buff;
-	node->prev = list->tail;
-	if (node->prev != nullptr) {
-		node->prev->next = node;
+	struct list_it *list_it = list_it_new();
+	list_it->buff = buff;
+	list_it->prev = list->tail;
+	if (list_it->prev != nullptr) {
+		list_it->prev->next = list_it;
 	}
 
 	if (list->head == nullptr) {
-		list->head = node;
+		list->head = list_it;
 	}
-	list->tail = node;
+	list->tail = list_it;
 	list->len++;
 }
 
 void list_push_front(struct list *list, void *buff) {
-	struct node *node = node_new();
-	node->buff = buff;
-	node->next = list->head;
-	if (node->next != nullptr) {
-		node->next->prev = node;
+	struct list_it *list_it = list_it_new();
+	list_it->buff = buff;
+	list_it->next = list->head;
+	if (list_it->next != nullptr) {
+		list_it->next->prev = list_it;
 	}
 
-	list->head = node;
+	list->head = list_it;
 	if (list->tail == nullptr) {
-		list->tail = node;
+		list->tail = list_it;
 	}
 	list->len++;
 }
@@ -71,8 +71,8 @@ void list_pop_back(struct list *list, void (*delete)(void *)) {
 		return;
 	}
 
-	struct node *node = list->tail;
-	list->tail = node->prev;
+	struct list_it *list_it = list->tail;
+	list->tail = list_it->prev;
 	if (list->tail != nullptr) {
 		list->tail->next = nullptr;
 	}
@@ -80,7 +80,7 @@ void list_pop_back(struct list *list, void (*delete)(void *)) {
 		list->head = nullptr;
 	}
 	list->len--;
-	node_delete(node, delete);
+	list_it_delete(list_it, delete);
 }
 
 void list_pop_front(struct list *list, void (*delete)(void *)) {
@@ -88,8 +88,8 @@ void list_pop_front(struct list *list, void (*delete)(void *)) {
 		return;
 	}
 
-	struct node *node = list->head;
-	list->head = node->next;
+	struct list_it *list_it = list->head;
+	list->head = list_it->next;
 	if (list->head != nullptr) {
 		list->head->prev = nullptr;
 	}
@@ -97,5 +97,5 @@ void list_pop_front(struct list *list, void (*delete)(void *)) {
 		list->tail = nullptr;
 	}
 	list->len--;
-	node_delete(node, delete);
+	list_it_delete(list_it, delete);
 }
