@@ -1,17 +1,19 @@
 #include <stdlib.h>
+#include <string.h>
 #include "list.h"
 
-struct list_it *list_it_new() {
-	struct list_it *list_it = (struct list_it *)malloc(sizeof(struct list_it));
+struct list_it *list_it_new(size_t len, char buff[len]) {
+	struct list_it *list_it = (struct list_it *)malloc(sizeof(struct list_it) + sizeof(char) * len);
 	list_it->prev = nullptr;
 	list_it->next = nullptr;
-	list_it->buff = nullptr;
+	list_it->len = len;
+	memcpy(list_it->buff, buff, len);
 	return list_it;
 }
 
-void list_it_delete(struct list_it *list_it, void (*delete)(void *)) {
+void list_it_delete(struct list_it *list_it, void (*delete)(size_t, char[])) {
 	if (delete != nullptr) {
-		delete(list_it->buff);
+		delete(list_it->len, list_it->buff);
 	}
 	free(list_it);
 }
@@ -24,7 +26,7 @@ struct list *list_new() {
 	return list;
 }
 
-void list_delete(struct list *list, void (*delete)(void *)) {
+void list_delete(struct list *list, void (*delete)(size_t, char[])) {
 	for (struct list_it *list_it = list->head; list_it != list->tail; list_it = list_it->next) {
 		if (list_it->prev != nullptr) {
 			list_it_delete(list_it->prev, delete);
@@ -36,9 +38,8 @@ void list_delete(struct list *list, void (*delete)(void *)) {
 	free(list);
 }
 
-void list_push_back(struct list *list, void *buff) {
-	struct list_it *list_it = list_it_new();
-	list_it->buff = buff;
+void list_push_back(struct list *list, size_t len, char buff[len]) {
+	struct list_it *list_it = list_it_new(len, buff);
 	list_it->prev = list->tail;
 	if (list_it->prev != nullptr) {
 		list_it->prev->next = list_it;
@@ -51,9 +52,8 @@ void list_push_back(struct list *list, void *buff) {
 	list->len++;
 }
 
-void list_push_front(struct list *list, void *buff) {
-	struct list_it *list_it = list_it_new();
-	list_it->buff = buff;
+void list_push_front(struct list *list, size_t len, char buff[len]) {
+	struct list_it *list_it = list_it_new(len, buff);
 	list_it->next = list->head;
 	if (list_it->next != nullptr) {
 		list_it->next->prev = list_it;
@@ -66,7 +66,7 @@ void list_push_front(struct list *list, void *buff) {
 	list->len++;
 }
 
-void list_pop_back(struct list *list, void (*delete)(void *)) {
+void list_pop_back(struct list *list, void (*delete)(size_t, char[])) {
 	if (list->tail == nullptr) {
 		return;
 	}
@@ -83,7 +83,7 @@ void list_pop_back(struct list *list, void (*delete)(void *)) {
 	list_it_delete(list_it, delete);
 }
 
-void list_pop_front(struct list *list, void (*delete)(void *)) {
+void list_pop_front(struct list *list, void (*delete)(size_t, char[])) {
 	if (list->head == nullptr) {
 		return;
 	}
